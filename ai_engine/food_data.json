@@ -1,0 +1,190 @@
+{
+  "breakfast": [
+    {
+      "name": "Oatmeal with Almond Milk, Chia Seeds, and Mixed Berries",
+      "diet_tags": ["vegetarian", "vegan", "non-vegetarian"],
+      "calories": 360,
+      "protein_g": 12,
+      "carbs_g": 58,
+      "fats_g": 9,
+      "portion": "1 bowl (60g oats, 200ml almond milk, 15g chia, 50g berries)"
+    },
+    {
+      "name": "Scrambled Eggs with Spinach, Tomatoes, and Whole Grain Toast",
+      "diet_tags": ["vegetarian", "non-vegetarian"],
+      "calories": 410,
+      "protein_g": 24,
+      "carbs_g": 32,
+      "fats_g": 20,
+      "portion": "2 whole eggs, 1 cup spinach, 1 tomato, 2 slices whole wheat toast"
+    },
+    {
+      "name": "Tofu Scramble with Turmeric, Bell Peppers, and Avocado Toast",
+      "diet_tags": ["vegetarian", "vegan", "non-vegetarian"],
+      "calories": 390,
+      "protein_g": 20,
+      "carbs_g": 35,
+      "fats_g": 18,
+      "portion": "150g firm tofu, bell peppers, spices, 1 slice rye toast with 1/4 avocado"
+    },
+    {
+      "name": "Greek Yogurt Bowl with Honey, Walnuts, and Sliced Banana",
+      "diet_tags": ["vegetarian", "non-vegetarian"],
+      "calories": 420,
+      "protein_g": 22,
+      "carbs_g": 48,
+      "fats_g": 15,
+      "portion": "200g plain Greek yogurt, 1 tbsp honey, 20g walnuts, 1 medium banana"
+    },
+    {
+      "name": "Smoked Salmon & Egg White Wrap with Baby Greens",
+      "diet_tags": ["non-vegetarian"],
+      "calories": 370,
+      "protein_g": 28,
+      "carbs_g": 28,
+      "fats_g": 14,
+      "portion": "60g smoked salmon, 3 egg whites, whole grain tortilla, greens"
+    }
+  ],
+  "lunch": [
+    {
+      "name": "Mediterranean Quinoa Bowl with Chickpeas, Cucumber, and Tahini",
+      "diet_tags": ["vegetarian", "vegan", "non-vegetarian"],
+      "calories": 520,
+      "protein_g": 18,
+      "carbs_g": 72,
+      "fats_g": 18,
+      "portion": "1 cup cooked quinoa, 1/2 cup chickpeas, chopped cucumber, 2 tbsp lemon tahini"
+    },
+    {
+      "name": "Grilled Chicken Breast with Brown Rice and Steamed Broccoli",
+      "diet_tags": ["non-vegetarian"],
+      "calories": 540,
+      "protein_g": 42,
+      "carbs_g": 52,
+      "fats_g": 14,
+      "portion": "150g grilled chicken, 1 cup cooked brown rice, 1.5 cups steamed broccoli"
+    },
+    {
+      "name": "Paneer and Mixed Vegetable Curry with Brown Rice",
+      "diet_tags": ["vegetarian", "non-vegetarian"],
+      "calories": 560,
+      "protein_g": 22,
+      "carbs_g": 62,
+      "fats_g": 24,
+      "portion": "100g low-fat paneer, tomato gravy, sautéed veggies, 1 cup brown rice"
+    },
+    {
+      "name": "Lentil & Sweet Potato Stew with Wilted Kale",
+      "diet_tags": ["vegetarian", "vegan", "non-vegetarian"],
+      "calories": 480,
+      "protein_g": 20,
+      "carbs_g": 76,
+      "fats_g": 10,
+      "portion": "1.5 cups stew (brown lentils, diced sweet potato, carrots, kale, cumin)"
+    },
+    {
+      "name": "Seared Tuna Salad with Edamame, Mixed Greens, and Sesame Dressing",
+      "diet_tags": ["non-vegetarian"],
+      "calories": 490,
+      "protein_g": 38,
+      "carbs_g": 30,
+      "fats_g": 22,
+      "portion": "130g tuna fillet, 1/2 cup edamame, mixed greens, sesame vinaigrette"
+    }
+  ],
+  "snack": [
+    {
+      "name": "Apple Slices with Natural Peanut Butter",
+      "diet_tags": ["vegetarian", "vegan", "non-vegetarian"],
+      "calories": 210,
+      "protein_g": 6,
+      "carbs_g": 26,
+      "fats_g": 10,
+      "portion": "1 medium apple, 1.5 tbsp unsweetened peanut butter"
+    },
+    {
+      "name": "Roasted Spiced Chickpeas & Pumpkin Seeds",
+      "diet_tags": ["vegetarian", "vegan", "non-vegetarian"],
+      "calories": 190,
+      "protein_g": 9,
+      "carbs_g": 22,
+      "fats_g": 8,
+      "portion": "40g roasted chickpeas and pepitas seasoned with paprika"
+    },
+    {
+      "name": "Cottage Cheese with Pineapple Chunks",
+      "diet_tags": ["vegetarian", "non-vegetarian"],
+      "calories": 180,
+      "protein_g": 16,
+      "carbs_g": 18,
+      "fats_g": 4,
+      "portion": "150g low-fat cottage cheese, 1/2 cup fresh pineapple chunks"
+    },
+    {
+      "name": "Hard-Boiled Eggs with a Dash of Black Pepper",
+      "diet_tags": ["vegetarian", "non-vegetarian"],
+      "calories": 140,
+      "protein_g": 12,
+      "carbs_g": 1,
+      "fats_g": 10,
+      "portion": "2 medium hard-boiled eggs"
+    },
+    {
+      "name": "Green Protein Smoothie with Spirulina and Almond Milk",
+      "diet_tags": ["vegetarian", "vegan", "non-vegetarian"],
+      "calories": 220,
+      "protein_g": 18,
+      "carbs_g": 22,
+      "fats_g": 6,
+      "portion": "1 scoop plant protein, 250ml unsweetened almond milk, spinach, 1/2 banana"
+    }
+  ],
+  "dinner": [
+    {
+      "name": "Baked Herb Salmon with Asparagus and Roasted Baby Potatoes",
+      "diet_tags": ["non-vegetarian"],
+      "calories": 580,
+      "protein_g": 40,
+      "carbs_g": 42,
+      "fats_g": 26,
+      "portion": "150g wild salmon fillet, 6 roasted asparagus spears, 150g baby potatoes"
+    },
+    {
+      "name": "Stir-Fried Tofu and Vegetables with Soba Noodles in Ginger Sauce",
+      "diet_tags": ["vegetarian", "vegan", "non-vegetarian"],
+      "calories": 510,
+      "protein_g": 24,
+      "carbs_g": 68,
+      "fats_g": 16,
+      "portion": "140g firm tofu, broccoli, snap peas, bell peppers, 80g buckwheat soba"
+    },
+    {
+      "name": "Dal Tadka (Yellow Lentil Curry) with Steamed Basmati and Spinach",
+      "diet_tags": ["vegetarian", "vegan", "non-vegetarian"],
+      "calories": 490,
+      "protein_g": 19,
+      "carbs_g": 78,
+      "fats_g": 11,
+      "portion": "1.5 cups yellow lentil dal, 1 cup cooked basmati rice, sautéed garlic spinach"
+    },
+    {
+      "name": "Turkey Chili with Black Beans, Diced Tomatoes, and Sweet Corn",
+      "diet_tags": ["non-vegetarian"],
+      "calories": 530,
+      "protein_g": 38,
+      "carbs_g": 54,
+      "fats_g": 16,
+      "portion": "1.5 cups lean turkey chili with black beans and spices"
+    },
+    {
+      "name": "Grilled Halloumi and Roasted Mediterranean Veggie Skewers with Couscous",
+      "diet_tags": ["vegetarian", "non-vegetarian"],
+      "calories": 540,
+      "protein_g": 21,
+      "carbs_g": 55,
+      "fats_g": 26,
+      "portion": "80g halloumi, zucchini, onion, bell pepper skewers, 1 cup couscous"
+    }
+  ]
+}
