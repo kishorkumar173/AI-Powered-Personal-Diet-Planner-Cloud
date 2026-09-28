@@ -4,11 +4,7 @@
  */
 
 export function getApiBaseUrl() {
-  const custom = localStorage.getItem('nutricloud_api_url');
-  if (custom && custom.trim()) {
-    return custom.trim().replace(/\/+$/, '');
-  }
-  return (import.meta.env.VITE_API_URL || 'http://localhost:8000').replace(/\/+$/, '');
+  return (import.meta.env.VITE_API_URL || 'https://ai-powered-personal-diet-planner-cloud.onrender.com').replace(/\/+$/, '');
 }
 
 export function setCustomApiUrl(url) {

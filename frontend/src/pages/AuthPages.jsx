@@ -25,21 +25,6 @@ export default function AuthPages({ onLoginSuccess }) {
     allergies: '',
   });
 
-  const currentApiUrl = api.getBaseUrl();
-  const isHostedOnCloud = typeof window !== 'undefined' && window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1';
-  const isPointingToLocalhost = currentApiUrl.includes('localhost') || currentApiUrl.includes('127.0.0.1');
-  const [cloudUrlInput, setCloudUrlInput] = useState(isPointingToLocalhost ? '' : currentApiUrl);
-  const [showConfig, setShowConfig] = useState(isHostedOnCloud && isPointingToLocalhost);
-
-  const handleSaveCloudUrl = () => {
-    if (!cloudUrlInput.trim()) {
-      alert('Please enter your live cloud backend URL (e.g. https://your-backend.onrender.com)');
-      return;
-    }
-    api.setBaseUrl(cloudUrlInput.trim());
-    window.location.reload();
-  };
-
   const handleLogin = async (e) => {
     e.preventDefault();
     setError('');
@@ -113,36 +98,6 @@ export default function AuthPages({ onLoginSuccess }) {
         </div>
 
         <div className="card" style={{ padding: '2rem' }}>
-          {/* Cloud Backend Connection Config for Deployed Vercel App */}
-          {(showConfig || (isHostedOnCloud && isPointingToLocalhost)) && (
-            <div style={{ background: '#fef3c7', border: '1px solid #fde68a', borderRadius: '0.75rem', padding: '1rem', marginBottom: '1.5rem', textAlign: 'left' }}>
-              <div style={{ fontWeight: '800', fontSize: '0.85rem', color: '#92400e', marginBottom: '0.35rem' }}>
-                ☁️ Connect Cloud Backend (Render URL)
-              </div>
-              <p style={{ fontSize: '0.78rem', color: '#78350f', lineHeight: 1.4, marginBottom: '0.65rem' }}>
-                Your app is deployed on Vercel, but currently pointing to <code>{currentApiUrl}</code> (which triggers Chrome's local permission popup). Paste your live Render backend URL:
-              </p>
-              <div style={{ display: 'flex', gap: '0.5rem' }}>
-                <input
-                  type="url"
-                  placeholder="https://your-backend.onrender.com"
-                  value={cloudUrlInput}
-                  onChange={(e) => setCloudUrlInput(e.target.value)}
-                  className="input-field"
-                  style={{ fontSize: '0.82rem', padding: '0.45rem 0.65rem', flex: 1 }}
-                />
-                <button
-                  type="button"
-                  onClick={handleSaveCloudUrl}
-                  className="btn btn-primary"
-                  style={{ fontSize: '0.8rem', padding: '0.45rem 0.85rem', whiteSpace: 'nowrap' }}
-                >
-                  Connect
-                </button>
-              </div>
-            </div>
-          )}
-
           {/* Tab selector */}
           <div style={{ display: 'flex', background: '#f1f5f9', padding: '0.25rem', borderRadius: '0.65rem', marginBottom: '1.5rem' }}>
             <button
@@ -368,18 +323,6 @@ export default function AuthPages({ onLoginSuccess }) {
               <Sparkles size={14} color="#10b981" />
               Prefill Demo Data for Testing
             </button>
-
-            <div style={{ marginTop: '0.85rem', fontSize: '0.75rem', color: '#64748b' }}>
-              <span>Backend Server: <strong style={{ color: isPointingToLocalhost ? '#d97706' : '#059669' }}>{currentApiUrl}</strong></span>
-              {' • '}
-              <button
-                type="button"
-                onClick={() => setShowConfig(!showConfig)}
-                style={{ background: 'none', border: 'none', color: '#2563eb', cursor: 'pointer', textDecoration: 'underline', fontSize: '0.75rem' }}
-              >
-                {showConfig ? 'Hide Config' : 'Change Cloud Server'}
-              </button>
-            </div>
           </div>
         </div>
 
