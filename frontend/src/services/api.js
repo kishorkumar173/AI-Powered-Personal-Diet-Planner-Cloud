@@ -19,7 +19,19 @@ function getAuthHeaders(isMultipart = false) {
 
 async function request(endpoint, options = {}) {
   const url = `${API_BASE_URL}${endpoint}`;
-  const response = await fetch(url, options);
+  let response;
+  try {
+    response = await fetch(url, options);
+  } catch (err) {
+    if (url.includes('localhost')) {
+      throw new Error(
+        `Cannot connect to backend: The frontend is attempting to call "${url}". Please set the VITE_API_URL environment variable to your live cloud backend URL on Vercel and redeploy!`
+      );
+    }
+    throw new Error(
+      `Unable to reach backend at "${url}". If your backend is hosted on Render, it may be waking up from free-tier sleep (please wait 30-40 seconds and try again).`
+    );
+  }
 
   if (response.status === 401) {
     // Unauthorized: clear token and redirect if needed

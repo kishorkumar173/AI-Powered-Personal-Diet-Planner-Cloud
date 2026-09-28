@@ -38,10 +38,11 @@ app = FastAPI(
     redoc_url="/redoc"
 )
 
-# CORS Middleware Configuration (Permits Frontend SPA integration)
+# CORS Middleware Configuration (Permits Frontend SPA integration from any origin)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # For development and cross-origin hosting
+    allow_origins=["*"],
+    allow_origin_regex=r"^https?:\/\/.*$",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
