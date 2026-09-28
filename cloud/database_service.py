@@ -11,7 +11,7 @@ import json
 import logging
 from abc import ABC, abstractmethod
 from typing import Dict, Any, List, Optional
-from datetime import datetime
+from datetime import datetime, timezone
 
 logger = logging.getLogger("database_service")
 
@@ -129,7 +129,7 @@ class SQLiteDatabaseService(BaseDatabaseService):
     def create_user(self, user_data: Dict[str, Any]) -> Dict[str, Any]:
         with self._get_connection() as conn:
             cursor = conn.cursor()
-            created_at = datetime.utcnow().isoformat()
+            created_at = datetime.now(timezone.utc).isoformat()
             cursor.execute("""
                 INSERT INTO users (
                     user_id, name, email, hashed_password, age, height, weight,
@@ -215,7 +215,7 @@ class SQLiteDatabaseService(BaseDatabaseService):
                 plan_data.get("dietary_preference", "vegetarian"),
                 plan_data.get("goal", "general_wellness"),
                 plan_data.get("source", "rule_based_engine"),
-                datetime.utcnow().isoformat()
+                datetime.now(timezone.utc).isoformat()
             ))
             conn.commit()
             return self.get_diet_plan_by_id(plan_data["plan_id"], plan_data["user_id"])
@@ -281,7 +281,7 @@ class SQLiteDatabaseService(BaseDatabaseService):
                 file_data["storage_path"],
                 file_data["file_size"],
                 file_data["content_type"],
-                datetime.utcnow().isoformat()
+                datetime.now(timezone.utc).isoformat()
             ))
             conn.commit()
             return self.get_file_metadata(file_data["file_id"], file_data["user_id"])
@@ -328,7 +328,7 @@ class FirestoreDatabaseService(BaseDatabaseService):
 
     def create_user(self, user_data: Dict[str, Any]) -> Dict[str, Any]:
         data = dict(user_data)
-        data["created_at"] = datetime.utcnow().isoformat()
+        data["created_at"] = datetime.now(timezone.utc).isoformat()
         self.db.collection("users").document(data["user_id"]).set(data)
         return self.get_user_by_id(data["user_id"])
 
@@ -348,7 +348,7 @@ class FirestoreDatabaseService(BaseDatabaseService):
 
     def save_diet_plan(self, plan_data: Dict[str, Any]) -> Dict[str, Any]:
         data = dict(plan_data)
-        data["created_at"] = datetime.utcnow().isoformat()
+        data["created_at"] = datetime.now(timezone.utc).isoformat()
         self.db.collection("diet_plans").document(data["plan_id"]).set(data)
         return data
 

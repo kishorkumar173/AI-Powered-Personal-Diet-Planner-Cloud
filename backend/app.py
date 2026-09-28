@@ -14,6 +14,7 @@ if str(ROOT_DIR) not in sys.path:
 
 import logging
 from fastapi import FastAPI
+from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 
@@ -54,6 +55,14 @@ app.include_router(profile_router)
 app.include_router(diet_router)
 app.include_router(file_router)
 app.include_router(dashboard_router)
+
+@app.exception_handler(Exception)
+async def global_exception_handler(request, exc):
+    logger.error(f"Unhandled exception on {request.url}: {exc}")
+    return JSONResponse(
+        status_code=500,
+        content={"detail": f"Internal Server Error: {str(exc)}"}
+    )
 
 
 @app.get("/", tags=["Health"])
