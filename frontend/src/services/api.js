@@ -3,7 +3,21 @@
  * Manages JWT Bearer authentication, HTTP requests, and backend communication.
  */
 
-const API_BASE_URL = (import.meta.env.VITE_API_URL || 'http://localhost:8000').replace(/\/+$/, '');
+export function getApiBaseUrl() {
+  const custom = localStorage.getItem('nutricloud_api_url');
+  if (custom && custom.trim()) {
+    return custom.trim().replace(/\/+$/, '');
+  }
+  return (import.meta.env.VITE_API_URL || 'http://localhost:8000').replace(/\/+$/, '');
+}
+
+export function setCustomApiUrl(url) {
+  if (url && url.trim()) {
+    localStorage.setItem('nutricloud_api_url', url.trim().replace(/\/+$/, ''));
+  } else {
+    localStorage.removeItem('nutricloud_api_url');
+  }
+}
 
 function getAuthHeaders(isMultipart = false) {
   const token = localStorage.getItem('nutricloud_token');
@@ -18,18 +32,19 @@ function getAuthHeaders(isMultipart = false) {
 }
 
 async function request(endpoint, options = {}) {
-  const url = `${API_BASE_URL}${endpoint}`;
+  const baseUrl = getApiBaseUrl();
+  const url = `${baseUrl}${endpoint}`;
   let response;
   try {
     response = await fetch(url, options);
   } catch (err) {
     if (url.includes('localhost')) {
       throw new Error(
-        `Cannot connect to backend: The frontend is attempting to call "${url}". Please set the VITE_API_URL environment variable to your live cloud backend URL on Vercel and redeploy!`
+        `The app is attempting to connect to "${url}". Because this site is on Vercel, please connect your live cloud backend URL.`
       );
     }
     throw new Error(
-      `Unable to reach backend at "${url}". If your backend is hosted on Render, it may be waking up from free-tier sleep (please wait 30-40 seconds and try again).`
+      `Unable to reach backend at "${url}". If hosted on Render free tier, the server may be waking up (please wait 30 seconds and retry).`
     );
   }
 
@@ -147,7 +162,11 @@ export const api = {
       headers: getAuthHeaders(),
     }),
 
-  getFileDownloadUrl: (fileId) => `${API_BASE_URL}/api/files/${fileId}/download`,
+  getFileDownloadUrl: (fileId) => `${getApiBaseUrl()}/api/files/${fileId}/download`,
+
+  // Dynamic Backend Config
+  getBaseUrl: getApiBaseUrl,
+  setBaseUrl: setCustomApiUrl,
 
   // Dashboard Aggregation
   getDashboardMetrics: () =>
